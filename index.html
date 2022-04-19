@@ -107,112 +107,111 @@
 		</div>
 
 		<script>
-			const words = [["accomplished", "accomplir", "accompli", false],
-							["admitted", "admettre", "admis", false],
-							["acted", "agir", "agi", false],
-							["liked", "aimer", "aimé", false],
-							["went", "aller", "allé", true],
-							["learned", "apprendre", "appris", false],
-							["arrived", "arriver", "arrivé", true],
-							["waited", "attendre", "attendu", false],
-							["drank", "boire", "bu", false],
-							["sang", "chanter", "chanté", false],
-							["chose", "choisir", "choisi", false],
-							["ordered", "commander", "commandé", false],
-							["began", "commencer", "commencé", false],
-							["understood", "comprendre", "compris", false],
-							["drove", "conduire", "conduit", false],
-							["knew (something)", "connaître", "connu", false],
-							["built", "construire", "construit", false],
-							["ran", "courir", "couru", false],
-							["sewed", "coudre", "cousu", false],
-							["covered", "couvrir", "couvert", false],
-							["feared", "craindre", "craint", false],
-							["believed", "croire", "cru", false],
-							["danced", "danser", "dansé", false],
-							["discovered", "découvrir", "découvert", false],
-							["defended", "défendre", "défendu", false],
-							["asked", "demander", "demandé", false],
-							["descended", "descendre", "descendu", true],
-							["drew", "dessiner", "dessiné", false],
-							["became", "devenir", "devenu", true],
-							["disappeared", "disparaître", "disparu", false],
-							["said", "dire", "dit", false],
-							["gave", "donner", "donné", false],
-							["had to", "devoir", "dû", false],
-							["listened", "écouter", "écouté", false],
-							["wrote", "écrire", "écrit", false],
-							["heard", "entendre", "entendu", false],
-							["entered", "entrer", "entré", true],
-							["was/were", "être", "été", false],
-							["studied", "étudier", "étudié", false],
-							["had", "avoir", "eu", false],
-							["did", "faire", "fait", false],
-							["made", "faire", "fait", false],
-							["finished", "finir", "fini", false],
-							["won", "gagner", "gagné", false],
-							["grew", "grandir", "grandi", false],
-							["lived", "habiter", "habité", false],
-							["joined", "joindre", "joint", false],
-							["played", "jouer", "joué", false],
-							["washed", "laver", "lavé", false],
-							["read", "lire", "lu", false],
-							["ate", "manger", "mangé", false],
-							["walked", "marcher", "marché", false],
-							["put", "mettre", "mis", false],
-							["ascended", "monter", "monté", true],
-							["died", "mourir", "mort", true],
-							["swam", "nager", "nagé", false],
-							["was/were born", "naître", "né", true],
-							["cleaned", "nettoyer", "nettoyé", false],
-							["obeyed", "obeir", "obéi", false],
-							["obtained", "obtenir", "obtenu", false],
-							["offered", "offrir", "offert", false],
-							["forgot", "oublier", "oublié", false],
-							["opened", "ouvrir", "ouvert", false],
-							["talked", "parler", "parlé", false],
-							["left", "partir", "parti", true],
-							["painted", "peindre", "peint", false],
-							["lost", "perdre", "perdu", false],
-							["allowed", "permettre", "permis", false],
-							["rained", "pleuvoir", "plu", false],
-							["took", "prendre", "pris", false],
-							["promised", "promettre", "promis", false],
-							["punished", "punir", "puni", false],
-							["was/were able to", "pouvoir", "pu", false],
-							["received", "recevoir", "reçu", false],
-							["reflected", "réfléchir", "réfléchi", false],
-							["refused", "refuser", "refusé", false],
-							["watched", "regarder", "regardé", false],
-							["put back", "remettre", "remis", false],
-							["met", "rencontrer", "rencontré", false],
-							["returned (home)", "rentrer", "rentré", true],
-							["answered", "répondre", "répondu", false],
-							["stayed", "rester", "resté", true],
-							["returned", "retourner", "retourné", true],
-							["came back", "revenir", "revenu", true],
-							["laughed", "rire", "ri", false],
-							["exited", "sortir", "sorti", true],
-							["suffered", "souffrir", "souffert", false],
-							["smiled", "sourire", "souri", false],
-							["knew", "savoir", "su", false],
-							["followed", "suivre", "suivi", false],
-							["surprised", "surprendre", "surpris", false],
-							["survived", "survivre", "survécu", false],
-							["telephoned", "téléphoner", "téléphoné", false],
-							["fell", "tomber", "tombé", true],
-							["translated", "traduire", "traduit", false],
-							["worked", "travailler", "travaillé", false],
-							["found", "trouver", "trouvé", false],
-							["used", "utiliser", "utilisé", false],
-							["was/were worth", "valoir", "valu", false],
-							["lived", "vivre", "vécu", false],
-							["sold", "vendre", "vendu", false],
-							["came", "venir", "venu", true],
-							["visited", "visiter", "visité", false],
-							["wanted", "vouloir", "voulu", false],
-							["travelled", "voyager", "voyagé", false],
-							["saw", "voir", "vu", false]]
+			const words = [["accomplished", "accomplir", "accompli", false, "accomplish"],
+							["admitted", "admettre", "admis", false, "admit"],
+							["acted", "agir", "agi", false, "act"],
+							["liked", "aimer", "aimé", false, "like"],
+							["went", "aller", "allé", true, "go"],
+							["learned", "apprendre", "appris", false, "learn"],
+							["arrived", "arriver", "arrivé", true, "arrive"],
+							["waited", "attendre", "attendu", false, "wait"],
+							["drank", "boire", "bu", false, "drink"],
+							["sang", "chanter", "chanté", false, "sing"],
+							["chose", "choisir", "choisi", false, "choose"],
+							["ordered", "commander", "commandé", false, "order"],
+							["began", "commencer", "commencé", false, "begin"],
+							["understood", "comprendre", "compris", false, "understand"],
+							["drove", "conduire", "conduit", false, "drive"],
+							["knew (something)", "connaître", "connu", false, "know (something)"],
+							["built", "construire", "construit", false, "build"],
+							["ran", "courir", "couru", false, "run"],
+							["sewed", "coudre", "cousu", false, "sew"],
+							["covered", "couvrir", "couvert", false, "cover"],
+							["feared", "craindre", "craint", false, "fear"],
+							["believed", "croire", "cru", false, "believe"],
+							["danced", "danser", "dansé", false, "dance"],
+							["discovered", "découvrir", "découvert", false, "discover"],
+							["defended", "défendre", "défendu", false, "defend"],
+							["asked", "demander", "demandé", false, "ask"],
+							["descended", "descendre", "descendu", true, "descend"],
+							["drew", "dessiner", "dessiné", false, "draw"],
+							["became", "devenir", "devenu", true, "become"],
+							["disappeared", "disparaître", "disparu", false, "disappear"],
+							["said", "dire", "dit", false, "say"],
+							["gave", "donner", "donné", false, "give"],
+							["had to", "devoir", "dû", false, "have to"],
+							["listened", "écouter", "écouté", false, "listen"],
+							["wrote", "écrire", "écrit", false, "write"],
+							["heard", "entendre", "entendu", false, "hear"],
+							["entered", "entrer", "entré", true, "enter"],
+							["was/were", "être", "été", false, "be"],
+							["studied", "étudier", "étudié", false, "study"],
+							["had", "avoir", "eu", false, "have"],
+							["did", "faire", "fait", false, "do"],
+							["made", "faire", "fait", false, "make"],
+							["finished", "finir", "fini", false, "finish"],
+							["won", "gagner", "gagné", false, "win"],
+							["grew", "grandir", "grandi", false, "grow"],
+							["lived", "habiter", "habité", false, "live"],
+							["joined", "joindre", "joint", false, "join"],
+							["played", "jouer", "joué", false, "play"],
+							["washed", "laver", "lavé", false, "wash"],
+							["read", "lire", "lu", false, "read"],
+							["ate", "manger", "mangé", false, "eat"],
+							["walked", "marcher", "marché", false, "walk"],
+							["put", "mettre", "mis", false, "put"],
+							["ascended", "monter", "monté", true, "ascend"],
+							["died", "mourir", "mort", true, "die"],
+							["swam", "nager", "nagé", false, "swim"],
+							["was/were born", "naître", "né", true, "be born"],
+							["cleaned", "nettoyer", "nettoyé", false, "clean"],
+							["obeyed", "obeir", "obéi", false, "obey"],
+							["obtained", "obtenir", "obtenu", false, "obtain"],
+							["offered", "offrir", "offert", false, "offer"],
+							["forgot", "oublier", "oublié", false, "forget"],
+							["opened", "ouvrir", "ouvert", false, "open"],
+							["talked", "parler", "parlé", false, "talk"],
+							["left", "partir", "parti", true, "leave"],
+							["painted", "peindre", "peint", false, "paint"],
+							["lost", "perdre", "perdu", false, "lose"],
+							["allowed", "permettre", "permis", false, "allow"],
+							["took", "prendre", "pris", false, "take"],
+							["promised", "promettre", "promis", false, "promise"],
+							["punished", "punir", "puni", false, "punish"],
+							["was/were able to", "pouvoir", "pu", false, "be able to"],
+							["received", "recevoir", "reçu", false, "receive"],
+							["reflected", "réfléchir", "réfléchi", false, "reflect"],
+							["refused", "refuser", "refusé", false, "refuse"],
+							["watched", "regarder", "regardé", false, "watch"],
+							["put back", "remettre", "remis", false, "put back"],
+							["met", "rencontrer", "rencontré", false, "meet"],
+							["returned (home)", "rentrer", "rentré", true, "return (home)"],
+							["answered", "répondre", "répondu", false, "answer"],
+							["stayed", "rester", "resté", true, "stay"],
+							["returned", "retourner", "retourné", true, "return"],
+							["came back", "revenir", "revenu", true, "come back"],
+							["laughed", "rire", "ri", false, "laugh"],
+							["exited", "sortir", "sorti", true, "exit"],
+							["suffered", "souffrir", "souffert", false, "suffer"],
+							["smiled", "sourire", "souri", false, "smile"],
+							["knew", "savoir", "su", false, "know"],
+							["followed", "suivre", "suivi", false, "follow"],
+							["surprised", "surprendre", "surpris", false, "surprise"],
+							["survived", "survivre", "survécu", false, "survive"],
+							["telephoned", "téléphoner", "téléphoné", false, "telephone"],
+							["fell", "tomber", "tombé", true, "fall"],
+							["translated", "traduire", "traduit", false, "translate"],
+							["worked", "travailler", "travaillé", false, "work"],
+							["found", "trouver", "trouvé", false, "find"],
+							["used", "utiliser", "utilisé", false, "use"],
+							["was/were worth", "valoir", "valu", false, "be worth"],
+							["lived", "vivre", "vécu", false, "live"],
+							["sold", "vendre", "vendu", false, "sell"],
+							["came", "venir", "venu", true, "come"],
+							["visited", "visiter", "visité", false, "visit"],
+							["wanted", "vouloir", "voulu", false, "want"],
+							["travelled", "voyager", "voyagé", false, "travel"],
+							["saw", "voir", "vu", false, "see"]]
 
 			function newquestion() {
         // Inefficient, but it works
@@ -314,69 +313,151 @@
 					default:
 						alert("Error: Unknown pronoun chosen");
 					}
+				
+				var english, french;
+				
+				switch (["ind", "ind", "ind", "neg", "neg", "inv", "inv"][Math.floor(Math.random()*7)]) {
+					case ("ind"):
+						english = pronoun + " " + verb[0];
+						french = pronounfr;
+						if (verb[3]) {
+							switch (id) {
+								case 0:
+									french += "e suis"
+									pronounfr += "";
+									break;
+								case 1:
+									french += " es";
+									break;
+								case 2:
+									french += " est";
+									break;
+								case 3:
+									french += " sommes";
+									break;
+								case 4:
+									french += " êtes";
+									break;
+								case 5:
+									french += " sont";
+									break;
+								default:
+									alert("Error: ID " + id + " out of bounds");
+							}
+
+							french += " " + verb[2];
+							if (fem) {
+								french += "e";
+							}
+							if (plu) {
+								french += "s";
+							}
+						}
+						else {
+							switch (id) {
+								case 0:
+									french += "'ai";
+									break;
+								case 1:
+									french += " as";
+									break;
+								case 2:
+									french += " a";
+									break;
+								case 3:
+									french += " avons";
+									break;
+								case 4:
+									french += " avez";
+									break;
+								case 5:
+									french += " ont";
+									break;
+								default:
+									alert("Error: ID " + id + " out of bounds");
+							}
+
+							french += " " + verb[2];
+						}
+						break;
+					case ("neg"):
+						if (verb[4].includes("was/were ")) {
+							english = pronoun + " was/were not " + verb[5].replace("be ", "");
+						}
+						else {
+							english = pronoun + " did not " + verb[4];
+						}
+						french = pronounfr;
+						if (verb[3]) {
+							switch (id) {
+								case 0:
+									french += "e ne suis pas";
+									pronounfr += "";
+									break;
+								case 1:
+									french += " n'es pas";
+									break;
+								case 2:
+									french += " n'est pas";
+									break;
+								case 3:
+									french += " ne sommes pas";
+									break;
+								case 4:
+									french += " n'êtes pas";
+									break;
+								case 5:
+									french += " ne sont pas";
+									break;
+								default:
+									alert("Error: ID " + id + " out of bounds");
+							}
+
+							french += " " + verb[2];
+							if (fem) {
+								french += "e";
+							}
+							if (plu) {
+								french += "s";
+							}
+						}
+						else {
+							switch (id) {
+								case 0:
+									french += "n'ai pas";
+									break;
+								case 1:
+									french += " n'as pas";
+									break;
+								case 2:
+									french += " n'a pas";
+									break;
+								case 3:
+									french += " n'avons pas";
+									break;
+								case 4:
+									french += " n'avez pas";
+									break;
+								case 5:
+									french += " n'ont pas";
+									break;
+								default:
+									alert("Error: ID " + id + " out of bounds");
+							}
+
+							french += " " + verb[2];
+						}
+						break;
+					case ("inv"):
+						
+						break;
+					default:
+						alert("Error: Sentence structure out of bounds");
+						break;
+				}
 
 				var english = pronoun + " " + verb[0];
 				var french = pronounfr;
-
-				if (verb[3]) {
-					switch (id) {
-						case 0:
-							french += "e suis"
-							pronounfr += "";
-							break;
-						case 1:
-							french += " es";
-							break;
-						case 2:
-							french += " est";
-							break;
-						case 3:
-							french += " sommes";
-							break;
-						case 4:
-							french += " êtes";
-							break;
-						case 5:
-							french += " sont";
-							break;
-						default:
-							alert("Error: ID " + id + " out of bounds");
-					}
-
-					french += " " + verb[2];
-					if (fem) {
-						french += "e";
-					}
-					if (plu) {
-						french += "s";
-					}
-				}
-				else {
-					switch (id) {
-						case 0:
-							french += "'ai";
-							break;
-						case 1:
-							french += " as";
-							break;
-						case 2:
-							french += " a";
-							break;
-						case 3:
-							french += " avons";
-							break;
-						case 4:
-							french += " avez";
-							break;
-						case 5:
-							french += " ont";
-							break;
-						default:
-							alert("Error: ID " + id + " out of bounds");
-					}
-
-					french += " " + verb[2];
-				}
 
 				document.getElementById("english").innerHTML = english;
 				sessionStorage.answer = french;
