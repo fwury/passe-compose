@@ -538,13 +538,14 @@
 								default:
 									alert("Error: ID " + id + " out of bounds");
 							}
-							french += " " + verb[2] + "?";
+							french += " " + verb[2];
 							if (fem) {
 								french += "e";
 							}
 							if (plu) {
 								french += "s";
 							}
+							french += "?";
 						}
 						else {
 							switch (id) {
