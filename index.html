@@ -322,10 +322,7 @@
 						english = pronoun + " " + verb[0];
 						french = pronounfr;
 						
-						console.log(verb[3]);
-						
 						if (verb[3]) {
-							console.log("Être verb");
 							switch (id) {
 								case 0:
 									french += "e suis"
@@ -360,7 +357,6 @@
 							}
 						}
 						else {
-							console.log("Avoir verb");
 							switch (id) {
 								case 0:
 									french += "'ai";
@@ -397,7 +393,6 @@
 						}
 						french = pronounfr;
 						if (verb[3]) {
-							console.log("Être verb");
 							switch (id) {
 								case 0:
 									french += "e ne suis pas";
@@ -421,7 +416,6 @@
 								default:
 									alert("Error: ID " + id + " out of bounds");
 							}
-							console.log(french);
 							french += " " + verb[2];
 							if (fem) {
 								french += "e";
@@ -429,10 +423,8 @@
 							if (plu) {
 								french += "s";
 							}
-							console.log(french);
 						}
 						else {
-							console.log("Avoir verb");
 							switch (id) {
 								case 0:
 									french += "n'ai pas";
@@ -455,9 +447,7 @@
 								default:
 									alert("Error: ID " + id + " out of bounds");
 							}
-							console.log(french);
 							french += " " + verb[2];
-							console.log(french);
 						}
 						break;
 					case ("inv"):
@@ -467,6 +457,9 @@
 						alert("Error: Sentence structure out of bounds");
 						break;
 				}
+				
+				console.log(english);
+				console.log(french);
 
 				document.getElementById("english").innerHTML = english;
 				sessionStorage.answer = french;
