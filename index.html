@@ -452,6 +452,112 @@
 						break;
 					case ("inv"):
 						console.log("Interrogative");
+						if (verb[1] == "être") {
+							english = "Was/were " + pronoun + "?";
+						}
+						else if (verb[1] == "naître") {
+							english = "Was/were " + pronoun + " born?";
+						}
+						else if (verb[1] == "pouvoir") {
+							english = "Was/were " + pronoun + " able to?";
+						}
+						else if (verb[1] == "valoir") {
+							english = "Was/were " + pronoun + " worth?";
+						}
+						else {
+							english = "Did " + pronoun + " " + verb[4] + "?";
+						}
+						
+						if (verb[3]) {
+							switch (id) {
+								case 0:
+									french += "Suis-je";
+									break;
+								case 1:
+									french += "Es-tu";
+									break;
+								case 2:
+									if (pronounfr == "Il") {
+										french += "Est-il";
+									}
+									else if (pronounfr = "Elle") {
+										french += "Est-elle";
+									}
+									else {
+										french += pronounfr + " est-il/elle";
+									}
+									break;
+								case 3:
+									french += "Sommes-nous";
+									break;
+								case 4:
+									french += "Êtes-vous";
+									break;
+								case 5:
+									if (pronounfr == "Ils") {
+										french += "Sont-ils";
+									}
+									else if (pronounfr == "Elles") {
+										french += "Sont-elles";
+									}
+									else {
+										french += pronounfr + " sont-ils/elles";
+									}
+									break;
+								default:
+									alert("Error: ID " + id + " out of bounds");
+							}
+							french += " " + verb[2];
+							if (fem) {
+								french += "e";
+							}
+							if (plu) {
+								french += "s";
+							}
+						}
+						else {
+							switch (id) {
+								case 0:
+									french += "Ai-je";
+									break;
+								case 1:
+									french += "As-tu";
+									break;
+								case 2:
+									if (pronounfr == "Il") {
+										french += "A-t-il";
+									}
+									else if (pronounfr = "Elle") {
+										french += "A-t-elle";
+									}
+									else {
+										french += pronounfr + " a-t-il/elle";
+									}
+									break;
+								case 3:
+									french += "Avons-nous";
+									break;
+								case 4:
+									french += "Avez-vous";
+									break;
+								case 5:
+									if (pronounfr == "Ils") {
+										french += "Ont-ils";
+									}
+									else if (pronounfr == "Elles") {
+										french += "Ont-elles";
+									}
+									else {
+										french += pronounfr + " ont-ils/elles";
+									}
+									break;
+								default:
+									alert("Error: ID " + id + " out of bounds");
+							}
+							french += " " + verb[2];
+						}
+						
+						
 						break;
 					default:
 						alert("Error: Sentence structure out of bounds");
