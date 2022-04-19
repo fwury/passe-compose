@@ -446,19 +446,19 @@
 					case ("inv"):
 						console.log("Interrogative");
 						if (verb[1] == "être") {
-							english = "Was/were " + pronoun + "?";
+							english = "Was/were " + pronoun.toLowerCase() + "?";
 						}
 						else if (verb[1] == "naître") {
-							english = "Was/were " + pronoun + " born?";
+							english = "Was/were " + pronoun.toLowerCase() + " born?";
 						}
 						else if (verb[1] == "pouvoir") {
-							english = "Was/were " + pronoun + " able to?";
+							english = "Was/were " + pronoun.toLowerCase() + " able to?";
 						}
 						else if (verb[1] == "valoir") {
-							english = "Was/were " + pronoun + " worth?";
+							english = "Was/were " + pronoun.toLowerCase() + " worth?";
 						}
 						else {
-							english = "Did " + pronoun + " " + verb[4] + "?";
+							english = "Did " + pronoun.toLowerCase() + " " + verb[4] + "?";
 						}
 						
 						if (verb[3]) {
