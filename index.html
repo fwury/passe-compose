@@ -448,19 +448,44 @@
 					case ("inv"):
 						console.log("Interrogative");
 						if (verb[1] == "être") {
-							english = "Was/were " + pronoun.toLowerCase() + "?";
+							if (["You", "He", "She", "You (p)", "They (m)", "They (f)"].contains(pronoun)) {
+								english = "Was/were " + pronoun.toLowerCase() + "?";
+							}
+							else {
+								english = "Was/were " + pronoun + "?";
+							}
 						}
 						else if (verb[1] == "naître") {
-							english = "Was/were " + pronoun.toLowerCase() + " born?";
+							if (["You", "He", "She", "You (p)", "They (m)", "They (f)"].contains(pronoun)) {
+								english = "Was/were " + pronoun.toLowerCase() + " born?";
+							}
+							else {
+								english = "Was/were " + pronoun + " born?";
+							}
 						}
 						else if (verb[1] == "pouvoir") {
-							english = "Was/were " + pronoun.toLowerCase() + " able to?";
+							if (["You", "He", "She", "You (p)", "They (m)", "They (f)"].contains(pronoun)) {
+								english = "Was/were " + pronoun.toLowerCase() + " able to?";
+							}
+							else {
+								english = "Was/were " + pronoun + " able to?";
+							}
 						}
 						else if (verb[1] == "valoir") {
-							english = "Was/were " + pronoun.toLowerCase() + " worth?";
+							if (["You", "He", "She", "You (p)", "They (m)", "They (f)"].contains(pronoun)) {
+								english = "Was/were " + pronoun.toLowerCase() + " worth?";
+							}
+							else {
+								english = "Was/were " + pronoun + " worth?";
+							}
 						}
 						else {
-							english = "Did " + pronoun.toLowerCase() + " " + verb[4] + "?";
+							if (["You", "He", "She", "You (p)", "They (m)", "They (f)"].contains(pronoun)) {
+								english = "Did " + pronoun.toLowerCase() + " " + verb[4] + "?";
+							}
+							else {
+								english = "Did " + pronoun + " " + verb[4] + "?";
+							}
 						}
 						
 						if (verb[3]) {
