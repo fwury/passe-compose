@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Passe composé drills</title>
+		<title>Passe Composé Exercises</title>
 		<style>
 			body {
 				margin: 0;
@@ -85,6 +85,10 @@
 				margin-right: 50vw;
 				font-size: 1.3em;
 			}
+			
+			#right {
+				float: right;
+			}
 
 			#menu p {
 				margin-right: 5vw;
@@ -98,6 +102,13 @@
 			<p style="color: pink;" id="wrong">0</p>&nbsp&nbsp
 			<p id="percentage">0%</p>&nbsp&nbsp
 			<p id="streak">0</p>&nbsp&nbsp -->
+			<div id="right">
+				<select id="type">
+					<option value="0">All verbs</option>
+					<option value="1">Irregular verbs</option>
+					<option value="2">Être verbs</option>
+				</select>
+			</div>
 		</div>
 		<div id="main">
 			<h1 id="english">Loading...</h1>
@@ -212,13 +223,104 @@
 							["wanted", "vouloir", "voulu", false, "want"],
 							["travelled", "voyager", "voyagé", false, "travel"],
 							["saw", "voir", "vu", false, "see"]]
+			
+			const irregulars = [["admitted", "admettre", "admis", false, "admit"],
+							["went", "aller", "allé", true, "go"],
+							["learned", "apprendre", "appris", false, "learn"],
+							["arrived", "arriver", "arrivé", true, "arrive"],
+							["drank", "boire", "bu", false, "drink"],
+							["understood", "comprendre", "compris", false, "understand"],
+							["drove", "conduire", "conduit", false, "drive"],
+							["knew (something)", "connaître", "connu", false, "know (something)"],
+							["built", "construire", "construit", false, "build"],
+							["ran", "courir", "couru", false, "run"],
+							["sewed", "coudre", "cousu", false, "sew"],
+							["covered", "couvrir", "couvert", false, "cover"],
+							["feared", "craindre", "craint", false, "fear"],
+							["believed", "croire", "cru", false, "believe"],
+							["discovered", "découvrir", "découvert", false, "discover"],
+							["descended", "descendre", "descendu", true, "descend"],
+							["became", "devenir", "devenu", true, "become"],
+							["disappeared", "disparaître", "disparu", false, "disappear"],
+							["said", "dire", "dit", false, "say"],
+							["had to", "devoir", "dû", false, "have to"],
+							["wrote", "écrire", "écrit", false, "write"],
+							["entered", "entrer", "entré", true, "enter"],
+							["was/were", "être", "été", false, "be"],
+							["had", "avoir", "eu", false, "have"],
+							["did", "faire", "fait", false, "do"],
+							["made", "faire", "fait", false, "make"],
+							["joined", "joindre", "joint", false, "join"],
+							["read", "lire", "lu", false, "read"],
+							["put", "mettre", "mis", false, "put"],
+							["ascended", "monter", "monté", true, "ascend"],
+							["died", "mourir", "mort", true, "die"],
+							["was/were born", "naître", "né", true, "be born"],
+							["obtained", "obtenir", "obtenu", false, "obtain"],
+							["offered", "offrir", "offert", false, "offer"],
+							["opened", "ouvrir", "ouvert", false, "open"],
+							["left", "partir", "parti", true, "leave"],
+							["painted", "peindre", "peint", false, "paint"],
+							["lost", "perdre", "perdu", false, "lose"],
+							["allowed", "permettre", "permis", false, "allow"],
+							["took", "prendre", "pris", false, "take"],
+							["promised", "promettre", "promis", false, "promise"],
+							["was/were able to", "pouvoir", "pu", false, "be able to"],
+							["received", "recevoir", "reçu", false, "receive"],
+							["put back", "remettre", "remis", false, "put back"],
+							["returned (home)", "rentrer", "rentré", true, "return (home)"],
+							["stayed", "rester", "resté", true, "stay"],
+							["returned", "retourner", "retourné", true, "return"],
+							["came back", "revenir", "revenu", true, "come back"],
+							["laughed", "rire", "ri", false, "laugh"],
+							["exited", "sortir", "sorti", true, "exit"],
+							["suffered", "souffrir", "souffert", false, "suffer"],
+							["smiled", "sourire", "souri", false, "smile"],
+							["knew", "savoir", "su", false, "know"],
+							["followed", "suivre", "suivi", false, "follow"],
+							["surprised", "surprendre", "surpris", false, "surprise"],
+							["survived", "survivre", "survécu", false, "survive"],
+							["fell", "tomber", "tombé", true, "fall"],
+							["translated", "traduire", "traduit", false, "translate"],
+							["was/were worth", "valoir", "valu", false, "be worth"],
+							["lived", "vivre", "vécu", false, "live"],
+							["came", "venir", "venu", true, "come"],
+							["wanted", "vouloir", "voulu", false, "want"],
+							["saw", "voir", "vu", false, "see"]]
+			
+			const etreverbs = [["went", "aller", "allé", true, "go"],
+							["arrived", "arriver", "arrivé", true, "arrive"],
+							["descended", "descendre", "descendu", true, "descend"],
+							["became", "devenir", "devenu", true, "become"],
+							["entered", "entrer", "entré", true, "enter"],
+							["ascended", "monter", "monté", true, "ascend"],
+							["died", "mourir", "mort", true, "die"],
+							["was/were born", "naître", "né", true, "be born"],
+							["left", "partir", "parti", true, "leave"],
+							["returned (home)", "rentrer", "rentré", true, "return (home)"],
+							["stayed", "rester", "resté", true, "stay"],
+							["returned", "retourner", "retourné", true, "return"],
+							["came back", "revenir", "revenu", true, "come back"],
+							["exited", "sortir", "sorti", true, "exit"],
+							["fell", "tomber", "tombé", true, "fall"],
+							["came", "venir", "venu", true, "come"]]
 
 			function newquestion() {
-        // Inefficient, but it works
-        
 				document.getElementById("answer").value = "";
 				document.getElementById("answer").placeholder = "Press TAB to give up";
-				var verb = words[Math.floor(Math.random()*words.length)];
+				
+				var verb;
+				var type = document.getElementById("type").value;
+				if (type == "0") {
+					verb = words[Math.floor(Math.random()*words.length)];
+				}
+				else if (type == "1") {
+					verb = irregulars[Math.floor(Math.random()*irregulars.length)];
+				}
+				else {
+					verb = etreverbs[Math.floor(Math.random()*etreverbs.length)];
+				}
+				
 				var pronoun, pronounfr, id;
 				var fem = false;
 				var plu = false;
