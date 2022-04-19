@@ -318,6 +318,7 @@
 				
 				switch (["ind", "ind", "ind", "neg", "neg", "inv", "inv"][Math.floor(Math.random()*7)]) {
 					case ("ind"):
+						console.log("Indicative");
 						english = pronoun + " " + verb[0];
 						french = pronounfr;
 						if (verb[3]) {
@@ -381,6 +382,7 @@
 						}
 						break;
 					case ("neg"):
+						console.log("Negative");
 						if (verb[4].includes("was/were ")) {
 							english = pronoun + " was/were not " + verb[5].replace("be ", "");
 						}
@@ -389,6 +391,7 @@
 						}
 						french = pronounfr;
 						if (verb[3]) {
+							console.log("Être verb");
 							switch (id) {
 								case 0:
 									french += "e ne suis pas";
@@ -412,7 +415,7 @@
 								default:
 									alert("Error: ID " + id + " out of bounds");
 							}
-
+							console.log(french);
 							french += " " + verb[2];
 							if (fem) {
 								french += "e";
@@ -420,8 +423,10 @@
 							if (plu) {
 								french += "s";
 							}
+							console.log(french);
 						}
 						else {
+							console.log("Avoir verb");
 							switch (id) {
 								case 0:
 									french += "n'ai pas";
@@ -444,8 +449,9 @@
 								default:
 									alert("Error: ID " + id + " out of bounds");
 							}
-
+							console.log(french);
 							french += " " + verb[2];
+							console.log(french);
 						}
 						break;
 					case ("inv"):
