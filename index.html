@@ -449,7 +449,7 @@
 					case ("inv"):
 						console.log("Interrogative");
 						if (verb[1] == "être") {
-							if (["You", "He", "She", "You (p)", "They (m)", "They (f)"].includes(pronoun)) {
+							if (["You", "He", "She", "We", "You (p)", "They (m)", "They (f)"].includes(pronoun)) {
 								english = "Was/were " + pronoun.toLowerCase() + "?";
 							}
 							else {
@@ -457,7 +457,7 @@
 							}
 						}
 						else if (verb[1] == "naître") {
-							if (["You", "He", "She", "You (p)", "They (m)", "They (f)"].includes(pronoun)) {
+							if (["You", "He", "She", "We", "You (p)", "They (m)", "They (f)"].includes(pronoun)) {
 								english = "Was/were " + pronoun.toLowerCase() + " born?";
 							}
 							else {
@@ -465,7 +465,7 @@
 							}
 						}
 						else if (verb[1] == "pouvoir") {
-							if (["You", "He", "She", "You (p)", "They (m)", "They (f)"].includes(pronoun)) {
+							if (["You", "He", "She", "We", "You (p)", "They (m)", "They (f)"].includes(pronoun)) {
 								english = "Was/were " + pronoun.toLowerCase() + " able to?";
 							}
 							else {
@@ -473,7 +473,7 @@
 							}
 						}
 						else if (verb[1] == "valoir") {
-							if (["You", "He", "She", "You (p)", "They (m)", "They (f)"].includes(pronoun)) {
+							if (["You", "He", "She", "We", "You (p)", "They (m)", "They (f)"].includes(pronoun)) {
 								english = "Was/were " + pronoun.toLowerCase() + " worth?";
 							}
 							else {
@@ -481,7 +481,7 @@
 							}
 						}
 						else {
-							if (["You", "He", "She", "You (p)", "They (m)", "They (f)"].includes(pronoun)) {
+							if (["You", "He", "She", "We", "You (p)", "They (m)", "They (f)"].includes(pronoun)) {
 								english = "Did " + pronoun.toLowerCase() + " " + verb[4] + "?";
 							}
 							else {
@@ -538,7 +538,7 @@
 								default:
 									alert("Error: ID " + id + " out of bounds");
 							}
-							french += " " + verb[2];
+							french += " " + verb[2] + "?";
 							if (fem) {
 								french += "e";
 							}
@@ -595,7 +595,7 @@
 								default:
 									alert("Error: ID " + id + " out of bounds");
 							}
-							french += " " + verb[2];
+							french += " " + verb[2] + "?";
 						}
 						
 						
