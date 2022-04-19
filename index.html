@@ -321,6 +321,9 @@
 						console.log("Indicative");
 						english = pronoun + " " + verb[0];
 						french = pronounfr;
+						
+						console.log(verb[3]);
+						
 						if (verb[3]) {
 							console.log("Être verb");
 							switch (id) {
@@ -348,6 +351,7 @@
 							}
 
 							french += " " + verb[2];
+							
 							if (fem) {
 								french += "e";
 							}
@@ -457,7 +461,7 @@
 						}
 						break;
 					case ("inv"):
-						
+						console.log("Interrogative");
 						break;
 					default:
 						alert("Error: Sentence structure out of bounds");
