@@ -422,7 +422,7 @@
 						else {
 							switch (id) {
 								case 0:
-									french += "n'ai pas";
+									french += "e n'ai pas";
 									break;
 								case 1:
 									french += " n'as pas";
@@ -504,7 +504,12 @@
 										french += "Est-elle";
 									}
 									else {
-										french += pronounfr + " est-il/elle";
+										if !(fem) {
+											french += pronounfr + " est-il";
+										}
+										else {
+											french += pronounfr + " est-elle";
+										}
 									}
 									break;
 								case 3:
@@ -521,7 +526,12 @@
 										french += "Sont-elles";
 									}
 									else {
-										french += pronounfr + " sont-ils/elles";
+										if !(fem) {
+											french += pronounfr + " sont-ils";
+										}
+										else {
+											french += pronounfr + " sont-elles";
+										}
 									}
 									break;
 								default:
@@ -551,7 +561,12 @@
 										french += "A-t-elle";
 									}
 									else {
-										french += pronounfr + " a-t-il/elle";
+										if !(fem) {
+											french += pronounfr + " a-t-il";
+										}
+										else {
+											french += pronounfr + " a-t-elle";
+										}
 									}
 									break;
 								case 3:
@@ -568,7 +583,12 @@
 										french += "Ont-elles";
 									}
 									else {
-										french += pronounfr + " ont-ils/elles";
+										if !(fem) {
+											french += pronounfr + " ont-ils";
+										}
+										else {
+											french += pronounfr + " ont-elles";
+										}
 									}
 									break;
 								default:
