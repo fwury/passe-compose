@@ -1,0 +1,420 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Passe composé drills</title>
+		<style>
+			body {
+				margin: 0;
+				background-color: #485273;
+				font-family: helvetica, sans-serif;
+				transition: 1s;
+				color: white;
+			}
+
+			#main {
+				position: fixed;
+				width: 60%;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				background-color: #272A36;
+				box-shadow: 0px 0px 30px #272A36;
+				border-radius: 10px;
+				animation: fadein 1.5s;
+			}
+
+			@keyframes fadein {
+				from {opacity: 0; transform: translate(-50%, -60%);}
+				to {opacity: 1;}
+			}
+
+			#english {
+				margin: 5%;
+				font-size: 3em;
+				color: white;
+			}
+
+			#clue {
+				margin: 5%;
+				color: white;
+			}
+
+			#answerbox {
+				background-color: #353949;
+				border-bottom-left-radius: 10px;
+				border-bottom-right-radius: 10px;
+			}
+
+			#answer {
+				width: 90%;
+				background-color: #353949;
+				color: white;
+				border-left: none;
+				border-right: none;
+				border-top: none;
+				border-bottom: 0.5px solid lightgray;
+				font-size: 2em;
+				margin: 5%;
+				padding: 5px;
+			}
+
+			#answer:focus {
+				outline: none;
+				border-bottom: 2px solid white;
+				transition: 0.1s;
+			}
+
+			#table {
+				width: 100%;
+				text-align: left;
+			}
+
+			#menu {
+				position: fixed;
+				width: 100%;
+				background-color: #272A36;
+				padding-left: 2%;
+				padding-right: 2%;
+				padding-top: 1%;
+				padding-bottom: 1%;
+				white-space: nowrap;
+			}
+
+			#menu * {
+				display: inline;
+				margin-right: 50vw;
+				font-size: 1.3em;
+			}
+
+			#menu p {
+				margin-right: 5vw;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="menu">
+			<h2>Passe Composé Exercises</h2>
+			<!-- <p style="color: lightgreen;" id="correct">0</p>&nbsp&nbsp&nbsp
+			<p style="color: pink;" id="wrong">0</p>&nbsp&nbsp
+			<p id="percentage">0%</p>&nbsp&nbsp
+			<p id="streak">0</p>&nbsp&nbsp -->
+		</div>
+		<div id="main">
+			<h1 id="english">Loading...</h1>
+			<div id="answerbox">
+				<input id="answer" placeholder="Press TAB to give up"></input>
+			</div>
+		</div>
+
+		<script>
+			const words = [["accomplished", "accomplir", "accompli", false],
+							["admitted", "admettre", "admis", false],
+							["acted", "agir", "agi", false],
+							["liked", "aimer", "aimé", false],
+							["went", "aller", "allé", true],
+							["learned", "apprendre", "appris", false],
+							["arrived", "arriver", "arrivé", true],
+							["waited", "attendre", "attendu", false],
+							["drank", "boire", "bu", false],
+							["sang", "chanter", "chanté", false],
+							["chose", "choisir", "choisi", false],
+							["ordered", "commander", "commandé", false],
+							["began", "commencer", "commencé", false],
+							["understood", "comprendre", "compris", false],
+							["drove", "conduire", "conduit", false],
+							["knew (something)", "connaître", "connu", false],
+							["built", "construire", "construit", false],
+							["ran", "courir", "couru", false],
+							["sewed", "coudre", "cousu", false],
+							["covered", "couvrir", "couvert", false],
+							["feared", "craindre", "craint", false],
+							["believed", "croire", "cru", false],
+							["danced", "danser", "dansé", false],
+							["discovered", "découvrir", "découvert", false],
+							["defended", "défendre", "défendu", false],
+							["asked", "demander", "demandé", false],
+							["descended", "descendre", "descendu", true],
+							["drew", "dessiner", "dessiné", false],
+							["became", "devenir", "devenu", true],
+							["disappeared", "disparaître", "disparu", false],
+							["said", "dire", "dit", false],
+							["gave", "donner", "donné", false],
+							["had to", "devoir", "dû", false],
+							["listened", "écouter", "écouté", false],
+							["wrote", "écrire", "écrit", false],
+							["heard", "entendre", "entendu", false],
+							["entered", "entrer", "entré", true],
+							["was/were", "être", "été", false],
+							["studied", "étudier", "étudié", false],
+							["had", "avoir", "eu", false],
+							["did", "faire", "fait", false],
+							["made", "faire", "fait", false],
+							["finished", "finir", "fini", false],
+							["won", "gagner", "gagné", false],
+							["grew", "grandir", "grandi", false],
+							["lived", "habiter", "habité", false],
+							["joined", "joindre", "joint", false],
+							["played", "jouer", "joué", false],
+							["washed", "laver", "lavé", false],
+							["read", "lire", "lu", false],
+							["ate", "manger", "mangé", false],
+							["walked", "marcher", "marché", false],
+							["put", "mettre", "mis", false],
+							["ascended", "monter", "monté", true],
+							["died", "mourir", "mort", true],
+							["swam", "nager", "nagé", false],
+							["was/were born", "naître", "né", true],
+							["cleaned", "nettoyer", "nettoyé", false],
+							["obeyed", "obeir", "obéi", false],
+							["obtained", "obtenir", "obtenu", false],
+							["offered", "offrir", "offert", false],
+							["forgot", "oublier", "oublié", false],
+							["opened", "ouvrir", "ouvert", false],
+							["talked", "parler", "parlé", false],
+							["left", "partir", "parti", true],
+							["painted", "peindre", "peint", false],
+							["lost", "perdre", "perdu", false],
+							["allowed", "permettre", "permis", false],
+							["rained", "pleuvoir", "plu", false],
+							["took", "prendre", "pris", false],
+							["promised", "promettre", "promis", false],
+							["punished", "punir", "puni", false],
+							["was/were able to", "pouvoir", "pu", false],
+							["received", "recevoir", "reçu", false],
+							["reflected", "réfléchir", "réfléchi", false],
+							["refused", "refuser", "refusé", false],
+							["watched", "regarder", "regardé", false],
+							["put back", "remettre", "remis", false],
+							["met", "rencontrer", "rencontré", false],
+							["returned (home)", "rentrer", "rentré", true],
+							["answered", "répondre", "répondu", false],
+							["stayed", "rester", "resté", true],
+							["returned", "retourner", "retourné", true],
+							["came back", "revenir", "revenu", true],
+							["laughed", "rire", "ri", false],
+							["exited", "sortir", "sorti", true],
+							["suffered", "souffrir", "souffert", false],
+							["smiled", "sourire", "souri", false],
+							["knew", "savoir", "su", false],
+							["followed", "suivre", "suivi", false],
+							["surprised", "surprendre", "surpris", false],
+							["survived", "survivre", "survécu", false],
+							["telephoned", "téléphoner", "téléphoné", false],
+							["fell", "tomber", "tombé", true],
+							["translated", "traduire", "traduit", false],
+							["worked", "travailler", "travaillé", false],
+							["found", "trouver", "trouvé", false],
+							["used", "utiliser", "utilisé", false],
+							["was/were worth", "valoir", "valu", false],
+							["lived", "vivre", "vécu", false],
+							["sold", "vendre", "vendu", false],
+							["came", "venir", "venu", true],
+							["visited", "visiter", "visité", false],
+							["wanted", "vouloir", "voulu", false],
+							["travelled", "voyager", "voyagé", false],
+							["saw", "voir", "vu", false]]
+
+			function newquestion() {
+        // Inefficient, but it works
+        
+				document.getElementById("answer").value = "";
+				document.getElementById("answer").placeholder = "Press TAB to give up";
+				var verb = words[Math.floor(Math.random()*words.length)];
+				var pronoun, pronounfr, id;
+				var fem = false;
+				var plu = false;
+				sessionStorage.infinitive = verb[1];
+
+				switch (["I", "You", "He", "She", "We", "You (p)", "They"][Math.floor(Math.random()*7)]) {
+					case "I":
+						id = 0;
+						pronoun = "I";
+						pronounfr = "J";
+						console.log(pronoun + ", " + pronounfr);
+						break;
+					case "You":
+						id = 1;
+						pronoun = "You";
+						pronounfr = "Tu";
+						console.log(pronoun + ", " + pronounfr);
+						break;
+					case "He":
+						id = 2;
+						pronoun = ["He", "He", "He", "He", "He", "He", "He", "He", "Antoine", "Charles", "François", "Gabriel", "Henri", "Louis", "Matthieu", "Nicholas", "Paul", "Pierre", "Sébastien", "Thomas", "The man", "The boy"][Math.floor(Math.random()*22)];
+						if (pronoun == "He") {
+							pronounfr = "Il";
+						}
+						else if (pronoun == "The man") {
+							pronounfr = "L'homme";
+						}
+						else if (pronoun == "The boy") {
+							pronounfr = "Le garçon";
+						}
+						else {
+							pronounfr = pronoun;
+						}
+						console.log(pronoun + ", " + pronounfr);
+						break;
+					case "She":
+						id = 2;
+						fem = true;
+						var pronoun = ["She", "She", "She", "She", "She", "She", "She", "Alice", "Anna", "Anne", "Caroline", "Catherine", "Emma", "Hélène", "Julia", "Louise", "Pauline", "Marie", "Mia", "The woman", "The girl"][Math.floor(Math.random()*22)];
+						if (pronoun == "She") {
+							pronounfr = "Elle";
+						}
+						else if (pronoun == "The woman") {
+							pronounfr = "La femme";
+						}
+						else if (pronoun == "The girl") {
+							pronounfr = "La fille";
+						}
+						else {
+							pronounfr = pronoun;
+						}
+						console.log(pronoun + ", " + pronounfr);
+						break;
+					case "We":
+						id = 3;
+						pronoun = "We";
+						pronounfr = "Nous";
+						console.log(pronoun + ", " + pronounfr);
+						break;
+					case "You (p)":
+						id = 4;
+						pronoun = "You (p)";
+						pronounfr = "Vous";
+						console.log(pronoun + ", " + pronounfr);
+						break;
+					case "They":
+						id = 5;
+						plu = true;
+						if (Math.random() > 0.5) {
+							var names = ["Antoine", "Charles", "François", "Gabriel", "Henri", "Louis", "Matthieu", "Nicholas", "Paul", "Pierre", "Sébastien", "Thomas", "Alice", "Anna", "Anne", "Caroline", "Catherine", "Emma", "Hélène", "Julia", "Louise", "Pauline", "Marie", "Mia"];
+							var person1 = names[Math.floor(Math.random()*names.length)];
+							names.splice(names.indexOf(person1), 1)
+							var person2 = names[Math.floor(Math.random()*names.length)];
+							pronoun = person1 + " and " + person2;
+							pronounfr = person1 + " et " + person2;
+
+							if (!["Antoine", "Charles", "François", "Gabriel", "Henri", "Louis", "Matthieu", "Nicholas", "Paul", "Pierre", "Sébastien", "Thomas"].includes(person1) && !["Antoine", "Charles", "François", "Gabriel", "Henri", "Louis", "Matthieu", "Nicholas", "Paul", "Pierre", "Sébastien", "Thomas"].includes(person2)) {
+								fem = true;
+							}
+						}
+						else if (Math.random() > 0.5) {
+							pronoun = "They (m)";
+							pronounfr = "Ils";
+						}
+						else {
+							pronoun = "They (f)";
+							pronounfr = "Elles";
+							fem = true;
+						}
+						console.log(pronoun + ", " + pronounfr);
+						break;
+					default:
+						alert("Error: Unknown pronoun chosen");
+					}
+
+				var english = pronoun + " " + verb[0];
+				var french = pronounfr;
+
+				if (verb[3]) {
+					switch (id) {
+						case 0:
+							french += "e suis"
+							pronounfr += "";
+							break;
+						case 1:
+							french += " es";
+							break;
+						case 2:
+							french += " est";
+							break;
+						case 3:
+							french += " sommes";
+							break;
+						case 4:
+							french += " êtes";
+							break;
+						case 5:
+							french += " sont";
+							break;
+						default:
+							alert("Error: ID " + id + " out of bounds");
+					}
+
+					french += " " + verb[2];
+					if (fem) {
+						french += "e";
+					}
+					if (plu) {
+						french += "s";
+					}
+				}
+				else {
+					switch (id) {
+						case 0:
+							french += "'ai";
+							break;
+						case 1:
+							french += " as";
+							break;
+						case 2:
+							french += " a";
+							break;
+						case 3:
+							french += " avons";
+							break;
+						case 4:
+							french += " avez";
+							break;
+						case 5:
+							french += " ont";
+							break;
+						default:
+							alert("Error: ID " + id + " out of bounds");
+					}
+
+					french += " " + verb[2];
+				}
+
+				document.getElementById("english").innerHTML = english;
+				sessionStorage.answer = french;
+			}
+
+			document.onkeydown = function(e) {
+				document.getElementById("answer").style.color = "white";
+				if (e.keyCode == 13) {
+					// Check answer
+					if (document.getElementById("answer").value == sessionStorage.answer) {
+						document.getElementById("answer").style.color = "lightgreen";
+						document.getElementById("answer").readOnly = true;
+
+						setTimeout(function() {
+							document.getElementById("answer").style.color = "white";
+							document.getElementById("answer").readOnly = false;
+							newquestion();
+						}, 1000);
+					}
+					else {
+						document.getElementById("answer").style.color = "pink";
+						
+						/*
+						document.getElementById("streak").innerHTML = "0";
+						document.getElementById("wrong").innerHTML = parseInt(document.getElementById("wrong").innerHTML) + 1;
+						updatePercentage();
+						*/
+					}
+				}
+				else if (e.keyCode == 9) {
+					// Give up
+					e.preventDefault();
+					document.getElementById("answer").value = "";
+					document.getElementById("answer").placeholder = sessionStorage.answer;
+				}
+			}
+
+			newquestion();
+		</script>
+	</body>
+</html>
