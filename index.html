@@ -93,13 +93,11 @@
 			<p style="color: pink;" id="wrong">0</p>&nbsp&nbsp
 			<p id="percentage">0%</p>&nbsp&nbsp
 			<p id="streak">0</p>&nbsp&nbsp -->
-			<div id="right">
-				<select id="type">
-					<option value="0">All verbs</option>
-					<option value="1">Irregular verbs</option>
-					<option value="2">Être verbs</option>
-				</select>
-			</div>
+			<select id="type">
+				<option value="0">All verbs</option>
+				<option value="1">Irregular verbs</option>
+				<option value="2">Être verbs</option>
+			</select>
 		</div>
 		<div id="main">
 			<h1 id="english">Loading...</h1>
@@ -109,6 +107,8 @@
 		</div>
 
 		<script>
+			document.getElementById("type").onchange = newquestion();
+			
 			const words = [["accomplished", "accomplir", "accompli", false, "accomplish"],
 							["admitted", "admettre", "admis", false, "admit"],
 							["acted", "agir", "agi", false, "act"],
