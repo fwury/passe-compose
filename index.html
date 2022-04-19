@@ -107,8 +107,6 @@
 		</div>
 
 		<script>
-			document.getElementById("type").onchange = newquestion();
-			
 			const words = [["accomplished", "accomplir", "accompli", false, "accomplish"],
 							["admitted", "admettre", "admis", false, "admit"],
 							["acted", "agir", "agi", false, "act"],
@@ -737,6 +735,8 @@
 					document.getElementById("answer").placeholder = sessionStorage.answer;
 				}
 			}
+			
+			document.getElementById("type").onchange = newquestion();
 
 			newquestion();
 		</script>
